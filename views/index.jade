@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  .row
+    .col-md-4
+      a(href="/switch-option/text-message",class="btn btn-default active",role="button") Change to Text Message
+    .col-md-4
+      a(href="/switch-option/audio-message",class="btn btn-default active",role="button") Change to Audio Message
+    .col-md-4
+      a(href="/switch-option/file-message",class="btn btn-default active",role="button") Change to File Message
+    .col-md-4
+      a(href="/switch-option/image-message",class="btn btn-default active",role="button") Change to Image Message
+    .col-md-4
+      a(href="/switch-option/video-message",class="btn btn-default active",role="button") Change to Video Message
+    .col-md-4
+      a(href="/switch-option/template-message",class="btn btn-default active",role="button") Change to Template Message
+    .col-md-4
+      a(href="/switch-option/text-quick-reply",class="btn btn-default active",role="button") Add a Text Quick Reply
+    .col-md-4
+      a(href="/switch-option/location-quick-reply",class="btn btn-default active",role="button") Add a Location Quick Reply
+    .col-md-4
+      a(href="/switch-option/remove-quick-reply",class="btn btn-default active",role="button") Clear Quick Replies
+
+  form(action="/",method="post")
+    .form-group
+      label(for="MessageField") JSON Message Field
+      textarea(class="form-control", id="MessageField", name="message_field", rows="20")= JSON.stringify(message,  null, '  ')
+    .form-group
+      label(for="Recipient IDs") Recipient IDs
+      textarea(class="form-control", id="Recipient IDs", name="recipient_ids", rows="10")
+    button(class="btn btn-success", type="submit") Send to Bot
